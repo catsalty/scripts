@@ -425,14 +425,6 @@ restart_and_update_docker() {
 
 restart_and_update_standalone() {
     _version="v0.20.10"
-
-    if [ -z "$_version" ]; then
-        err "获取 Dashboard 版本号失败，请检查本机能否链接 https://api.github.com/repos/nezhahq/nezha/releases/latest"
-        return 1
-    else
-        echo "当前最新版本为： ${_version}"
-    fi
-
     if [ "$INIT" = "systemd" ]; then
         sudo systemctl daemon-reload
         sudo systemctl stop nezha-dashboard
